@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen:client": "graphql-codegen --config codegen-client.ts",
+    "codegen:server": "graphql-codegen --config codegen-server.ts"
   },
   "dependencies": {
     "@types/node": "20.4.1",
@@ -26,5 +28,11 @@
     "tailwindcss": "3.3.2",
     "typescript": "5.1.6",
     "urql": "^4.0.4"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "4.0.1",
+    "@graphql-codegen/client-preset": "4.0.1",
+    "@graphql-codegen/typescript-resolvers": "4.0.1",
+    "@graphql-codegen/typescript": "4.0.1"
   }
 }

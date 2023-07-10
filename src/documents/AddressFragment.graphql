@@ -1,0 +1,5 @@
+fragment Address on Address {
+  zip
+  street
+  city
+}
