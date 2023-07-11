@@ -1,28 +1,26 @@
 "use client";
 import { useQuery, useMutation, gql } from "urql";
-import { graphql } from "@/gql";
 import User from "@/components/User";
-import { User as UserType } from "@/gql/graphql";
+import { User as UserType } from "@/generated/graphql";
 import { useEffect, useState } from "react";
 
-function Home() {
+function Test() {
   const [allUsers, setAllUsers] = useState<UserType[]>([]);
   const [idIn, setIdIn] = useState("0");
   const [ageIn, setAgeIn] = useState(0);
 
-  // prettier-ignore
-  const UserQuery = graphql(/* GraphQL */ `query GetUser($id: ID!) {\n  user(id: $id) {\n    id\n    name\n    age\n    address {\n      ...Address\n    }\n  }\n}`);
+  const UserQuery = gql(/* GraphQL */ `query GetUser($id: ID!) {\n  user(id: $id) {\n    id\n    name\n    age\n   }\n  }\n}`);
   const [userQueryResult] = useQuery({
     query: UserQuery,
     variables: { id: idIn },
   });
 
   // prettier-ignore
-  const UpdateUserMutation = graphql(/* GraphQL */ `mutation UpdateAge($id: ID!, $age: Int!) {\n  updateAge(input: {id: $id, age: $age}) {\n    id\n    name\n    age\n  }\n}`);
+  const UpdateUserMutation = gql(/* GraphQL */ `mutation UpdateAge($id: ID!, $age: Int!) {\n  updateAge(input: {id: $id, age: $age}) {\n    id\n    name\n    age\n  }\n}`);
   const [updateResult, updateUser] = useMutation(UpdateUserMutation);
 
   // prettier-ignore
-  const AllUsersQuery = graphql(/* GraphQL */ `query AllUsers {\n  users {\n    id\n    name\n    age\n  }\n}`);
+  const AllUsersQuery = gql(/* GraphQL */ `query AllUsers {\n  users {\n    id\n    name\n    age\n  }\n}`);
   const [usersQueryResult] = useQuery({ query: AllUsersQuery });
 
   useEffect(() => {
@@ -65,4 +63,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Test;

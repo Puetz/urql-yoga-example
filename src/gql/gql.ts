@@ -17,6 +17,7 @@ const documents = {
     "query AllUsers {\n  users {\n    id\n    name\n    age\n  }\n}": types.AllUsersDocument,
     "query GetUser($id: ID!) {\n  user(id: $id) {\n    id\n    name\n    age\n    address {\n      ...Address\n    }\n  }\n}": types.GetUserDocument,
     "mutation UpdateAge($id: ID!, $age: Int!) {\n  updateAge(input: {id: $id, age: $age}) {\n    id\n    name\n    age\n  }\n}": types.UpdateAgeDocument,
+    "fragment UserFragment on User {\n  id\n  name\n  age\n  address {\n    zip\n    street\n    city\n  }\n}": types.UserFragmentFragmentDoc,
 };
 
 /**
@@ -49,6 +50,10 @@ export function graphql(source: "query GetUser($id: ID!) {\n  user(id: $id) {\n 
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "mutation UpdateAge($id: ID!, $age: Int!) {\n  updateAge(input: {id: $id, age: $age}) {\n    id\n    name\n    age\n  }\n}"): (typeof documents)["mutation UpdateAge($id: ID!, $age: Int!) {\n  updateAge(input: {id: $id, age: $age}) {\n    id\n    name\n    age\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "fragment UserFragment on User {\n  id\n  name\n  age\n  address {\n    zip\n    street\n    city\n  }\n}"): (typeof documents)["fragment UserFragment on User {\n  id\n  name\n  age\n  address {\n    zip\n    street\n    city\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
