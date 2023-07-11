@@ -57,12 +57,12 @@ export type User = {
   name: Scalars['String']['output'];
 };
 
+export type AddressFragment = { __typename?: 'Address', zip: number, street: string, city?: string | null } & { ' $fragmentName'?: 'AddressFragment' };
+
 export type AllUsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type AllUsersQuery = { __typename?: 'Query', users?: Array<{ __typename?: 'User', id: string, name: string, age?: number | null } | null> | null };
-
-export type AddressFragment = { __typename?: 'Address', zip: number, street: string, city?: string | null } & { ' $fragmentName'?: 'AddressFragment' };
 
 export type GetUserQueryVariables = Exact<{
   id: Scalars['ID']['input'];

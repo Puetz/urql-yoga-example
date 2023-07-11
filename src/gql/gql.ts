@@ -13,8 +13,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "query AllUsers {\n  users {\n    id\n    name\n    age\n  }\n}": types.AllUsersDocument,
     "fragment Address on Address {\n  zip\n  street\n  city\n}": types.AddressFragmentDoc,
+    "query AllUsers {\n  users {\n    id\n    name\n    age\n  }\n}": types.AllUsersDocument,
     "query GetUser($id: ID!) {\n  user(id: $id) {\n    id\n    name\n    age\n    address {\n      ...Address\n    }\n  }\n}": types.GetUserDocument,
     "mutation UpdateAge($id: ID!, $age: Int!) {\n  updateAge(input: {id: $id, age: $age}) {\n    id\n    name\n    age\n  }\n}": types.UpdateAgeDocument,
 };
@@ -36,11 +36,11 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query AllUsers {\n  users {\n    id\n    name\n    age\n  }\n}"): (typeof documents)["query AllUsers {\n  users {\n    id\n    name\n    age\n  }\n}"];
+export function graphql(source: "fragment Address on Address {\n  zip\n  street\n  city\n}"): (typeof documents)["fragment Address on Address {\n  zip\n  street\n  city\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "fragment Address on Address {\n  zip\n  street\n  city\n}"): (typeof documents)["fragment Address on Address {\n  zip\n  street\n  city\n}"];
+export function graphql(source: "query AllUsers {\n  users {\n    id\n    name\n    age\n  }\n}"): (typeof documents)["query AllUsers {\n  users {\n    id\n    name\n    age\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
