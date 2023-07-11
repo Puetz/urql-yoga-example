@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "codegen:client": "graphql-codegen --config codegen-client.ts",
-    "codegen:server": "graphql-codegen --config codegen-server.ts"
+    "codegen:server": "graphql-codegen --config codegen-server.ts",
+    "codegen:init": "graphql-codegen init"
   },
   "dependencies": {
     "@types/node": "20.4.1",
@@ -20,7 +21,6 @@
     "graphql": "^16.7.1",
     "graphql-yoga": "^4.0.3",
     "next": "13.4.9",
-    "next-urql": "^5.0.2",
     "postcss": "8.4.25",
     "react": "18.2.0",
     "react-dom": "18.2.0",

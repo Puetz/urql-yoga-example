@@ -1,9 +1,10 @@
-schema {
-  query: Query
-}
-
 type Query {
   user(id: ID!): User
+  users: [User]
+}
+
+type Mutation {
+  updateAge(input: UpdateAgeInput!): User
 }
 
 type User {
@@ -17,4 +18,9 @@ type Address {
   zip: Int!
   street: String!
   city: String
+}
+
+input UpdateAgeInput {
+  id: ID!
+  age: Int!
 }

@@ -1,0 +1,7 @@
+mutation UpdateAge($id: ID!, $age: Int!) {
+  updateAge(input: { id: $id, age: $age }) {
+    id
+    name
+    age
+  }
+}
