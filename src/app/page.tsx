@@ -1,3 +1,11 @@
+/**
+ *
+ * Example page with client-side codegen.
+ * UserType gets imported from the generated client types.
+ * Typed graphql function are used instead of generic gql function from urql.
+ *
+ */
+
 "use client";
 import { useQuery, useMutation, gql } from "urql";
 import { graphql } from "@/gql";

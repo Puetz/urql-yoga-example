@@ -1,3 +1,12 @@
+/**
+ *
+ * Example page without any client-side codegen.
+ * UserType gets imported from the generated server type.
+ * Generic gql function from urql package is used.
+ * So no typesafety on client here.
+ *
+ */
+
 "use client";
 import { useQuery, useMutation, gql } from "urql";
 import User from "@/components/User";

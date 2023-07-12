@@ -1,7 +1,12 @@
-import { User } from "@/gql/graphql";
 import React from "react";
+import { FragmentType, graphql, useFragment } from "@/gql";
 
-export default function OldUser({ user }: { user: User }) {
+// prettier-ignore
+const UserFragment = graphql(/* GraphQL */ `fragment UserFragment on User {\n  id\n  name\n  age\n  address {\n    zip\n    street\n    city\n  }\n}`)
+
+const User = (props: { user: FragmentType<typeof UserFragment> }) => {
+  const user = useFragment(UserFragment, props.user);
+
   return (
     <div className="border-2 border-zinc-300 w-fit p-5 rounded-lg shadow-md">
       <div className="grid grid-cols-2 gap-x-0">
@@ -21,4 +26,6 @@ export default function OldUser({ user }: { user: User }) {
       </div>
     </div>
   );
-}
+};
+
+export default User;
